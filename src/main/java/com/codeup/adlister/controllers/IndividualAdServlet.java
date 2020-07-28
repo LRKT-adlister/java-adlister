@@ -19,6 +19,7 @@ public class IndividualAdServlet extends HttpServlet {
         Long oneAd = Long.parseLong(request.getParameter("singleAd"));
         Ad singleAd = DaoFactory.getAdsDao().findUniqueAdId(oneAd);
         //ad that gets back set as an attribute do ${};
+        request.setAttribute("singleAd", DaoFactory.getAdsDao().findUniqueAdId(oneAd));
 
         System.out.println(singleAd.getTitle());
 
@@ -28,7 +29,6 @@ public class IndividualAdServlet extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
     }
 }
