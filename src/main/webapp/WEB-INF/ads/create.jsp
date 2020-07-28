@@ -8,6 +8,20 @@
 <body>
     <div class="container">
         <h1>Create a new Ad</h1>
+        <%
+            if(request.getAttribute("errors") != null) {
+        %>
+        <fieldset>
+            <legend>Error</legend>
+            <ul>
+                <%if(request.getAttribute("errors") != null) {%>
+                <li class="error">Please Fill out all Information</li>
+                <% } %>
+            </ul>
+        </fieldset>
+        <%
+            }
+        %>
         <form action="/ads/create" method="post">
             <div class="form-group">
                 <label for="title">Title</label>
