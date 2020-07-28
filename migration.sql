@@ -28,7 +28,6 @@ CREATE TABLE ads (
 CREATE TABLE categories (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     title VARCHAR(240) NOT NULL,
-    description TEXT NOT NULL,
     PRIMARY KEY (id)
 );
 

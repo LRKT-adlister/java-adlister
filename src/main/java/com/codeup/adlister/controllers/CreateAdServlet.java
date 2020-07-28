@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
@@ -22,14 +23,31 @@ public class CreateAdServlet extends HttpServlet {
             .forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         User user = (User) request.getSession().getAttribute("user");
-        Ad ad = new Ad(
-            user.getId(),
-            request.getParameter("title"),
-            request.getParameter("description")
-        );
-        DaoFactory.getAdsDao().insert(ad);
-        response.sendRedirect("/ads");
+        //code for error messages
+        request.setAttribute("errors", false);
+        boolean hasErrors = request.getParameter("title").isEmpty()
+                || request.getParameter("description").isEmpty();
+
+        String currentTitle = request.getParameter("title");
+        request.setAttribute("title", currentTitle);
+
+        String currentDesc = request.getParameter("description");
+        request.setAttribute("description", currentDesc);
+
+        if(!hasErrors) {
+            Ad ad = new Ad(
+                    user.getId(),
+                    request.getParameter("title"),
+                    request.getParameter("description")
+            );
+            DaoFactory.getAdsDao().insert(ad);
+            response.sendRedirect("/ads");
+        } else {
+            request.setAttribute("errors", true);
+            request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
+                    .forward(request, response);
+        }
     }
 }

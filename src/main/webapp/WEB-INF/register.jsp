@@ -9,6 +9,20 @@
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>
+        <%
+            if(request.getAttribute("errors") != null) {
+        %>
+        <fieldset>
+            <legend>Error</legend>
+            <ul>
+                <%if(request.getAttribute("errors") != null) {%>
+                <li class="error">Please Fill out all Information</li>
+                <% } %>
+            </ul>
+        </fieldset>
+        <%
+            }
+        %>
         <form action="/register" method="post">
             <div class="form-group">
                 <label for="username">Username</label>

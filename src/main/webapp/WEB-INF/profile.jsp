@@ -12,9 +12,18 @@
     <div class="container">
 
         <h1>Welcome, ${sessionScope.user.username}!</h1>
-                <button window.location.replace="http://localhost:8080/ads/create">
-                    <a href="/ads/create">Create an Ad</a>
-                </button>
+
+        <h1>Here Are all your ads!</h1>
+
+        <c:forEach var="ad" items="${ads}">
+            <c:if test="${sessionScope.user.id eq ad.userId}">
+                <div class="col-md-6">
+                    <h2>${ad.title}</h2>
+                    <p>${ad.description}</p>
+                </div>
+            </c:if>
+        </c:forEach>
+
     </div>
 
 </body>
