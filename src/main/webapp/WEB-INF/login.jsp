@@ -9,6 +9,26 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
         <h1>Please Log In</h1>
+        <%
+            if(request.getAttribute("errors") != null) {
+        %>
+        <fieldset>
+            <legend>Errors</legend>
+            <ul>
+                <%if(request.getAttribute("username_error") != null) {%>
+                    <li class="error">Username error</li>
+                <% } %>
+
+                <%if(request.getAttribute("password_error") != null) {%>
+                <li class="error">Password error</li>
+                <% } %>
+            </ul>
+        </fieldset>
+        <%
+            }
+        %>
+
+
         <form action="/login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
