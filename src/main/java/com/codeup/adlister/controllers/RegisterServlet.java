@@ -16,11 +16,14 @@ public class RegisterServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
+
+        // error message code
+        request.setAttribute("errors", false);
 
         // validate input
         boolean inputHasErrors = username.isEmpty()
@@ -29,7 +32,9 @@ public class RegisterServlet extends HttpServlet {
             || (! password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
-            response.sendRedirect("/register");
+//            response.sendRedirect("/register");
+            request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+            request.setAttribute("errors", true);
             return;
         }
 
