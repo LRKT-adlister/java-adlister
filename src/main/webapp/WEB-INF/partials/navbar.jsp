@@ -1,39 +1,47 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="https://kit.fontawesome.com/da30200d10.js" crossorigin="anonymous"></script>
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <%--LOGO directing to home/landing page--%>
-            <a class="navbar-brand" style="font-family: fantasy" href="/home">LRKT</a>
+            <%--LOGO directing to ads page -K --%>
+            <a class="navbar-brand" href="/ads">LRKT<i class="fas fa-network-wired"></i></a>
         </div>
-
-
-<%--        add a droplist w/ catgegories--%>
-<%--        add a search bar for searching through ads--%>
-<%--        CREATE A SEARCH SERVLET to help seperate functionality--%>
-
+        <div>
             <ul class="nav navbar-nav navbar-right">
-            <c:choose>
-                <%--        IF USER (view) profile & logout--%>
-                <c:if test="${sessionScope.user != null}">
-                <li><a href="/profile">Profile</a></li>
-                <li><a href="/logout">Logout</a></li>
-                </c:if>
-                <c:otherwise>
-                    <%--        VISITOR login & register links--%>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
+                <li>
+                    <%--     for visitor/user view  add a dropdown list w/ categories -K--%>
+                </li>
 
-                </c:otherwise>
+                <li>
+                    <%--      for visitor/user view   add a search bar for searching through ads--%>
+                    <%--      need help centering search bar + adding dropdown              --%>
+                    <form action="${pageContext.request.contextPath}/ads" class="form-inline" method="post">
+                        <input id="search" name="search" class="form-control" type="search" placeholder="Search Ads..." aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
 
+                </li>
+                <%--        IF USER profile, logout, create ad links -K--%>
+                <%--        IF VISITOR login & register links -K--%>
+                <c:choose>
+                    <c:when test="${sessionScope['user'] != null}">
+                        <li><a href="${pageContext.request.contextPath}/profile">View Profile</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+                        <li><a href="${pageContext.request.contextPath}/ads/create">Create Ads</a></li>
 
+                    </c:when>
+                    <c:otherwise>
+
+                        <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+                        <li><a href="${pageContext.request.contextPath}/register">Register</a></li>
+                    </c:otherwise>
+                </c:choose>
 
             </ul>
-        </c:choose>
-
-
-
-
+        </div>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
+
 </nav>
