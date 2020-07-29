@@ -20,6 +20,8 @@ public class EditAdServlet extends HttpServlet {
         System.out.println("singleAd.getTitle() = " + singleAd.getTitle());
         //ad that gets back set as an attribute do ${};
         request.setAttribute("singleAd", singleAd);
+        request.setAttribute("existingTitle", singleAd.getTitle());
+        request.setAttribute("existingDescription", singleAd.getDescription());
         request.getRequestDispatcher("/WEB-INF/ads/editads.jsp").forward(request, response);
 
     }
