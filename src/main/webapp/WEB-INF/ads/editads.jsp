@@ -15,6 +15,10 @@
 <body><jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
     <div class="col-md-6 justify-content-center">
+
+      
+
+
         <h1>TODO edit Ads.</h1>
         <h1> Title: ${singleAd.title} </h1>
         <h3> Description: ${singleAd.description}</h3>

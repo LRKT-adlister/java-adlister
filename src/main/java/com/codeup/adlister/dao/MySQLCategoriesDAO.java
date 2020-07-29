@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Category;
 import com.mysql.cj.jdbc.Driver;
 import models.Config;
@@ -22,6 +23,24 @@ public class MySQLCategoriesDAO implements Categories {
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
+
+
+    @Override
+    public Category findUniqueCategoryId(Long category){
+        String query = "SELECT * FROM categories WHERE id = ? LIMIT 1";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, category);
+            ResultSet rs = stmt.executeQuery();
+            if (! rs.next()) {
+                return null;
+            }
+            return extractCategory(rs);
+        } catch(SQLException e) {
+            throw new RuntimeException("Error finding Ad ID", e);
+        }
+    }
+
 
 
     public List<Category> all() {
@@ -54,6 +73,9 @@ public class MySQLCategoriesDAO implements Categories {
 //    }
 
     private Category extractCategory(ResultSet rs) throws SQLException {
+        if(! rs.next()){
+            return null;
+        }
         return new Category(
                 rs.getInt("id"),
                 rs.getString("title")

@@ -1,4 +1,5 @@
 USE adlister_db;
+SELECT * FROM categories WHERE id = 1 LIMIT 1;
 
 TRUNCATE TABLE ads_categories;
 # used to remove all records, performs the same as DELETE but w/o WHERE clause
