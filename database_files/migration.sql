@@ -1,20 +1,24 @@
+CREATE DATABASE IF NOT EXISTS adlister_db DEFAULT CHARACTER SET utf8mb4;
+
 USE adlister_db;
 
-DROP TABLE IF EXISTS ads;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS categories;
-DROP TABLE IF EXISTS ads_categories;
+# SHOW TABLES;
 
-CREATE TABLE users (
+# DESCRIBE users;
+
+CREATE TABLE IF NOT EXISTS users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     username VARCHAR(240) NOT NULL,
     email VARCHAR(240) NOT NULL,
     password VARCHAR(240) NOT NULL,
     profile_img LONGBLOB,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE (username, email)
 );
 
-CREATE TABLE ads (
+# DESCRIBE ads;
+
+CREATE TABLE IF NOT EXISTS ads (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_id INT UNSIGNED NOT NULL,
     title VARCHAR(240) NOT NULL,
@@ -25,17 +29,19 @@ CREATE TABLE ads (
         ON DELETE CASCADE
 );
 
-CREATE TABLE categories (
+# DESCRIBE categories;
+
+CREATE TABLE IF NOT EXISTS categories (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     title VARCHAR(240) NOT NULL,
     PRIMARY KEY (id)
 );
 
+# DESCRIBE ads_categories;
 
-CREATE TABLE ads_categories (
+CREATE TABLE IF NOT EXISTS ads_categories (
     ad_id INTEGER UNSIGNED NOT NULL,
     cat_id INTEGER UNSIGNED NOT NULL,
     FOREIGN KEY (ad_id) REFERENCES ads(id),
     FOREIGN KEY (cat_id) REFERENCES categories(id)
 );
-
