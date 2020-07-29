@@ -49,5 +49,7 @@ public class CreateAdServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
                     .forward(request, response);
         }
+
+
     }
 }
