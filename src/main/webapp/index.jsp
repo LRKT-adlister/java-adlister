@@ -10,6 +10,13 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
         <h1>Welcome to the Adlister!</h1>
+
     </div>
+        <c:forEach var="categories" items="${categories}">
+    <div class="col-md-6">
+            <p>${categories.title}</p>
+
+    </div>
+        </c:forEach>
 </body>
 </html>
