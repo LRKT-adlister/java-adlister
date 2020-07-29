@@ -11,4 +11,6 @@ public interface Ads {
     Long insert(Ad ad);
 
     Ad findUniqueAdId(Long ad);
+
+    void delete(Ad ad, long id);
 }
