@@ -89,6 +89,7 @@ public class EditAdServlet extends HttpServlet {
         request.setAttribute("existingTitle", singleAd.getTitle());
         request.setAttribute("existingDescription", singleAd.getDescription());
 
+
         //======SETTING VALUES IN THE FORM=======//
         String title = request.getParameter("title");
         String description = request.getParameter("description");
