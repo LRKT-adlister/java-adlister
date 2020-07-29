@@ -25,22 +25,47 @@ public class RegisterServlet extends HttpServlet {
         // error message code
         request.setAttribute("errors", false);
 
+
         // validate input
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
             || password.isEmpty()
             || (! password.equals(passwordConfirmation));
 
-        if (inputHasErrors) {
-//            response.sendRedirect("/register");
-            request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+        if (username.isEmpty()) {
             request.setAttribute("errors", true);
-            return;
+            request.setAttribute("username_error", true);
+
         }
 
-        // create and save a new user
-        User user = new User(username, email, password);
-        DaoFactory.getUsersDao().insert(user);
-        response.sendRedirect("/login");
+        if (email.isEmpty()) {
+            request.setAttribute("errors", true);
+            request.setAttribute("email_error", true);
+        }
+
+        if (password.isEmpty()) {
+            request.setAttribute("errors", true);
+            request.setAttribute("password_error", true);
+        }
+        if (! password.equals(passwordConfirmation)){
+            request.setAttribute("errors", true);
+            request.setAttribute("passwordConfirmation_error", true);
+        }
+
+//        if (inputHasErrors) {
+////            response.sendRedirect("/register");
+//            request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+//            request.setAttribute("errors", true);
+//            return;
+//        }
+        if ((Boolean)request.getAttribute("errors")){
+            request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+        }
+        else if(!inputHasErrors) {
+            // create and save a new user
+            User user = new User(username, email, password);
+            DaoFactory.getUsersDao().insert(user);
+            response.sendRedirect("/login");
+        }
     }
 }

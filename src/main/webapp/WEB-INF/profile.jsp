@@ -8,7 +8,7 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-
+git
     <div class="container">
 
         <h1>Welcome, ${sessionScope.user.username}!</h1>
@@ -24,6 +24,13 @@
                             <%--      put a hidden input type ="hidden" send over value with
                                       whole ad Object--%>
                         <button>Edit Ad</button>
+                        <input type="hidden" name="singleAd" value="${ad.id}">
+                    </form>
+
+                    <form action="/ads/delete" method="POST">
+                            <%--      put a hidden input type ="hidden" send over value with
+                                      whole ad Object--%>
+                        <button>Delete Ad</button>
                         <input type="hidden" name="singleAd" value="${ad.id}">
                     </form>
 

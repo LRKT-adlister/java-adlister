@@ -27,6 +27,7 @@ public class CreateAdServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         //code for error messages
         request.setAttribute("errors", false);
+
         boolean hasErrors = request.getParameter("title").isEmpty()
                 || request.getParameter("description").isEmpty();
 
@@ -49,5 +50,7 @@ public class CreateAdServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
                     .forward(request, response);
         }
+
+
     }
 }
