@@ -13,10 +13,19 @@
             if(request.getAttribute("errors") != null) {
         %>
         <fieldset>
-            <legend>Error</legend>
+            <legend>Errors</legend>
             <ul>
-                <%if(request.getAttribute("errors") != null) {%>
-                <li class="error">Please Fill out all Information</li>
+                <%if(request.getAttribute("username_error") != null) {%>
+                <li class="error">Please fill out username</li>
+                <% } %>
+                <%if(request.getAttribute("email_error") != null) {%>
+                <li class="error">Please fill out email</li>
+                <% } %>
+                <%if(request.getAttribute("password_error") != null) {%>
+                <li class="error">Please fill out password</li>
+                <% } %>
+                <%if(request.getAttribute("passwordConfirmation_error") != null) {%>
+                <li class="error">Passwords do not match</li>
                 <% } %>
             </ul>
         </fieldset>
