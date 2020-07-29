@@ -15,7 +15,13 @@
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
             <h2>${ad.title}</h2>
-            <p>${ad.description}</p>
+            <p> Description: ${ad.description}</p>
+            <form action="/ads/single" method="get">
+        <%--      put a hidden input type ="hidden" send over value with
+                  whole ad Object--%>
+               <button>Click for more details!</button>
+            <input type="hidden" name="singleAd" value="${ad.id}">
+            </form>
         </div>
     </c:forEach>
 </div>
