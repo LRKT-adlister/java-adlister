@@ -14,6 +14,7 @@ import java.io.IOException;
 public class EditAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+//        if(request.getSession().setAttribute("Ad", ))
 
 //
         Long oneAd = Long.parseLong(request.getParameter("singleAd"));
@@ -69,9 +70,14 @@ public class EditAdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 
+
+
         Long oneAd = Long.parseLong(request.getParameter("singleAd"));
 
         Ad singleAd = DaoFactory.getAdsDao().findUniqueAdId(oneAd);
+
+        System.out.println("singleAd = " + singleAd);
+        System.out.println("oneAd = " + oneAd);
 
         request.setAttribute("existingTitle", singleAd.getTitle());
         request.setAttribute("existingDescription", singleAd.getDescription());
