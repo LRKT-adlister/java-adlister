@@ -3,12 +3,11 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 import models.Config;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLAdsDao implements Ads {
+public abstract class MySQLAdsDao implements Ads {
     private Connection connection = null;
 
     public MySQLAdsDao(Config config) {
@@ -22,6 +21,26 @@ public class MySQLAdsDao implements Ads {
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
         }
+    }
+
+    @Override
+    public List<Ad> searchAds(String keyword) throws SQLException {
+
+        List<Ad> adList = new ArrayList<>();
+        String sqlQuery = "SELECT id FROM ads WHERE title LIKE ?";
+
+        PreparedStatement stmt = connection.prepareStatement(sqlQuery, Statement.NO_GENERATED_KEYS);
+        stmt.setString(1, "%" + keyword + "%");
+//        stmt.setString(2, "%" + keyword + "%");
+        System.out.println(stmt);
+        stmt.executeQuery();
+        ResultSet rs = stmt.getResultSet();
+        while (rs.next()) {
+            adList.add(findUniqueAdId(rs.getLong("id")));
+        }
+//        adList.add(new Ad(1, "title", "description"));
+
+        return adList;
     }
 
     @Override
