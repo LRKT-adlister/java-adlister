@@ -34,14 +34,15 @@ public class MySQLAdsCategoriesDao implements AdsCategories {
             ResultSet rs = stmt.executeQuery();
             return createAdsCategoriesFromResults(rs);
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException("Error retrieving Ads Categories");
         }
 
 
     }
+
     private AdCategory extractAdCategory(ResultSet rs) throws SQLException {
-        if(! rs.next()){
+        if (!rs.next()) {
             return null;
         }
         return new AdCategory(
