@@ -20,7 +20,7 @@ public class DeleteAdServlet extends HttpServlet {
         //retrieve ad
         Long adId = Long.parseLong(request.getParameter("singleAd"));
         Ad singleAd = DaoFactory.getAdsDao().findUniqueAdId(adId);
-        DaoFactory.getAdsDao().delete(singleAd, adId);
+        DaoFactory.getAdsDao().delete(singleAd);
         response.sendRedirect("/profile");
         //delete ad
 
