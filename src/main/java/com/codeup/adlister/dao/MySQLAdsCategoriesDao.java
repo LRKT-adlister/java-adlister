@@ -1,25 +1,62 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.AdCategory;
+import com.codeup.adlister.models.Category;
 import models.Config;
 
-import java.sql.Connection;
-import com.mysql.cj.jdbc.Driver;
-import java.sql.SQLException;
+import java.sql.*;
 
-//public class MySQLAdsCategoriesDao implements AdsCategories {
-//    private Connection connection = null;
-//
-//    public MySQLAdsCategoriesDao(Config config) {
-//        try {
-//            DriverManager.registerDriver(new Driver());
-//            connection = DriverManager.getConnection(
-//                    config.getUrl(),
-//                    config.getUser(),
-//                    config.getPassword()
-//            );
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error connecting to the database!", e);
-//        }
-//    }
-//
-//}
+import com.mysql.cj.jdbc.Driver;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MySQLAdsCategoriesDao implements AdsCategories {
+    private Connection connection = null;
+
+    public MySQLAdsCategoriesDao(Config config) {
+        try {
+            DriverManager.registerDriver(new Driver());
+            connection = DriverManager.getConnection(
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException("Error connecting to the database!", e);
+        }
+    }
+
+    public List<AdCategory> all() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads_categories");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsCategoriesFromResults(rs);
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error retrieving Ads Categories");
+        }
+
+
+    }
+    private AdCategory extractAdCategory(ResultSet rs) throws SQLException {
+        if(! rs.next()){
+            return null;
+        }
+        return new AdCategory(
+                rs.getInt("ad_id"),
+                rs.getInt("cat_id")
+        );
+    }
+
+    private List<AdCategory> createAdsCategoriesFromResults(ResultSet rs) throws SQLException {
+        List<AdCategory> AdsCategories = new ArrayList<>();
+        while (rs.next()) {
+            AdsCategories.add(extractAdCategory(rs));
+        }
+        return AdsCategories;
+    }
+
+}
+

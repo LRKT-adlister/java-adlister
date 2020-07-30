@@ -24,6 +24,12 @@
             </form>
         </div>
     </c:forEach>
+    <c:forEach var="AdCategory" items="${adsCategories}">
+        <div class="col-md-6">
+            <h2>${ad_id}</h2>
+            <h2>${cat_id}</h2>
+        </div>
+    </c:forEach>
 </div>
 
 </body>
