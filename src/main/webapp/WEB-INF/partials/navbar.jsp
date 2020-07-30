@@ -17,8 +17,8 @@
                 <li>
                     <%--      for visitor/user view   add a search bar for searching through ads--%>
                     <%--      need help centering search bar + adding dropdown              --%>
-                    <form action="${pageContext.request.contextPath}/ads" class="form-inline" method="POST">
-                        <input id="search" name="search" class="form-control" type="search" placeholder="Search Ads..." aria-label="Search">
+                    <form action="/ads/search" class="form-inline" method="GET">
+                        <input id="s" name="s" class="form-control" type="search" placeholder="Search Ads..." aria-label="Search">
                         <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
                     </form>
 
