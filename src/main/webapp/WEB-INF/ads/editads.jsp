@@ -15,7 +15,7 @@
 <body><jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
     <form action="/ads/edit" method="post">
-<%--        <input type="hidden" name="adToUpdate" value="${adObject}">--%>
+        <input type="hidden" name="adToUpdate" value="${adObject}">
     <div class="col-md-6 justify-content-center form-group">
         <h1>TODO edit Ads.</h1>
             <label for="title"> Title:</label>
