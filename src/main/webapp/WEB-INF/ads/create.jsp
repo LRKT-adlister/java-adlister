@@ -36,34 +36,34 @@
             <%--     Categories goes here:       --%>
             <label>Categories: </label>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="1" value="option1">
+                <input class="form-check-input" type="checkbox" id="1" name="1" value="option1">
                 <label class="form-check-label" for="1">Anime</label>
 
-                <input class="form-check-input" type="checkbox" id="2" value="option1">
+                <input class="form-check-input" type="checkbox" id="2" name="2" value="option2">
                 <label class="form-check-label" for="2">Tech</label>
 
-                <input class="form-check-input" type="checkbox" id="3" value="option1">
+                <input class="form-check-input" type="checkbox" id="3" name="3" value="option3">
                 <label class="form-check-label" for="3">Gaming Consoles</label>
 
-                <input class="form-check-input" type="checkbox" id="4" value="option1">
+                <input class="form-check-input" type="checkbox" id="4" name="4" value="option4">
                 <label class="form-check-label" for="4">Video Games</label>
 
-                <input class="form-check-input" type="checkbox" id="5" value="option1">
+                <input class="form-check-input" type="checkbox" id="5" name="5" value="option5">
                 <label class="form-check-label" for="5">Office Supplies</label>
 
-                <input class="form-check-input" type="checkbox" id="6" value="option1">
+                <input class="form-check-input" type="checkbox" id="6" name="6" value="option6">
                 <label class="form-check-label" for="5">DVDs</label>
 
-                <input class="form-check-input" type="checkbox" id="7" value="option1">
+                <input class="form-check-input" type="checkbox" id="7" name="7" value="option7">
                 <label class="form-check-label" for="5">Vehicles</label>
 
-                <input class="form-check-input" type="checkbox" id="8" value="option1">
+                <input class="form-check-input" type="checkbox" id="8" name="8" value="option8">
                 <label class="form-check-label" for="5">Books</label>
 
-                <input class="form-check-input" type="checkbox" id="9" value="option1">
+                <input class="form-check-input" type="checkbox" id="9" name="9" value="option9">
                 <label class="form-check-label" for="5">Pets</label>
 
-                <input class="form-check-input" type="checkbox" id="10" value="option1">
+                <input class="form-check-input" type="checkbox" id="10" name="10" value="option10">
                 <label class="form-check-label" for="10">Miscellaneous</label>
             </div>
 
