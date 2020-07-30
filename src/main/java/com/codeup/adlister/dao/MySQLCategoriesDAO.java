@@ -52,22 +52,7 @@ public class MySQLCategoriesDAO implements Categories {
         }
     }
 
-//    do we need this if we have predefined categories we're going to use? -K
-//    @Override
-//    public Long insert(Category category) {
-//        try {
-//            String insertQuery = "INSERT INTO categories(id, title) VALUES (?, ?)";
-//            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-//            stmt.setLong(1, category.getId());
-//            stmt.setString(2, category.getTitle());
-//            stmt.executeUpdate();
-//            ResultSet rs = stmt.getGeneratedKeys();
-//            rs.next();
-//            return rs.getLong(1);
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error creating a new category.", e);
-//        }
-//    }
+
 
 //for finding categories maybe???
     public int findCategoryByName(String title) {
