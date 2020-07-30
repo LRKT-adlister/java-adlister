@@ -9,25 +9,31 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Edit your Ad" />
+        <jsp:param name="title" value="Edit your Ad"/>
     </jsp:include>
 </head>
-<body><jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <div class="container">
     <form action="/ads/edit" method="post">
+<<<<<<< HEAD
         <input type="hidden" name="adToUpdate" value="${adObject}">
     <div class="col-md-6 justify-content-center form-group">
         <h1>TODO edit Ads.</h1>
+=======
+        <%--        <input type="hidden" name="adToUpdate" value="${adObject}">--%>
+        <div class="form-group">
+            <h1>TODO edit Ads.</h1>
+>>>>>>> 28a40c0708ac728e4de658e16f0c7f2a547e9607
             <label for="title"> Title:</label>
             <input id="title" type="text" name="title" value="${existingTitle}">
-
-    </div>
-    <div class="form-group">
+        </div>
+        <div class="form-group">
             <label for="description"> Description: </label>
-            <input id="description" type="text" name="description" value="${existingDescription}">
+            <textarea id="description" type="text" name="description">${existingDescription}</textarea>
             <h3>Categories would go here: </h3>
             <button>Save Changes</button>
-    </div>
+        </div>
 
     </form>
 

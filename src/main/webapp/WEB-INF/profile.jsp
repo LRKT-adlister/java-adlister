@@ -8,7 +8,7 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-git
+
     <div class="container">
 
         <h1>Welcome, ${sessionScope.user.username}!</h1>
@@ -23,8 +23,10 @@ git
                     <p>${ad.description}</p>
                             <%--      put a hidden input type ="hidden" send over value with
                                       whole ad Object--%>
-                        <button>Edit Ad</button>
-    <a href="${pageContext.request.contextPath}/ads/edit/${ad.id}">Click for more info</a>
+    <form action="${pageContext.request.contextPath}/ads/edit/${ad.id}" method="get">
+        <button>Edit Ad</button>
+    </form>
+<%--    <a href="${pageContext.request.contextPath}/ads/edit/${ad.id}">Edit Ad</a>--%>
 <%--                        <input type="hidden" name="singleAd" value="${ad.id}">--%>
 
 <%--                    </form>--%>
