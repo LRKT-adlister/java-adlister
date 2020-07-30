@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <%--LOGO directing to ads page -K --%>
+            <%--LOGO directing to ads page (change it to home page) -K --%>
             <a class="navbar-brand" href="/ads">LRKT<i class="fas fa-network-wired"></i></a>
         </div>
         <div>
@@ -17,8 +17,8 @@
                 <li>
                     <%--      for visitor/user view   add a search bar for searching through ads--%>
                     <%--      need help centering search bar + adding dropdown              --%>
-                    <form action="${pageContext.request.contextPath}/ads" class="form-inline" method="post">
-                        <input id="search" name="search" class="form-control" type="search" placeholder="Search Ads..." aria-label="Search">
+                    <form action="/ads/search" class="form-inline" method="GET">
+                        <input id="s" name="s" class="form-control" type="search" placeholder="Search Ads..." aria-label="Search">
                         <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
                     </form>
 
