@@ -18,14 +18,16 @@ git
         <c:forEach var="ad" items="${ads}">
             <c:if test="${sessionScope.user.id eq ad.userId}">
                 <div class="col-md-6">
-                    <form action="/ads/edit" method="get">
+<%--                    <form action="/ads/edit" method="get">--%>
                     <h2>${ad.title}</h2>
                     <p>${ad.description}</p>
                             <%--      put a hidden input type ="hidden" send over value with
                                       whole ad Object--%>
                         <button>Edit Ad</button>
-                        <input type="hidden" name="singleAd" value="${ad.id}">
-                    </form>
+    <a href="${pageContext.request.contextPath}/ads/edit/${ad.id}">Click for more info</a>
+<%--                        <input type="hidden" name="singleAd" value="${ad.id}">--%>
+
+<%--                    </form>--%>
 
                     <form action="/ads/delete" method="POST">
                             <%--      put a hidden input type ="hidden" send over value with
