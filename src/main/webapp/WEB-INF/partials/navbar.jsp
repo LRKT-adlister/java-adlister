@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <%--LOGO directing to ads page -K --%>
+            <%--LOGO directing to ads page (change it to home page) -K --%>
             <a class="navbar-brand" href="/ads">LRKT<i class="fas fa-network-wired"></i></a>
         </div>
         <div>

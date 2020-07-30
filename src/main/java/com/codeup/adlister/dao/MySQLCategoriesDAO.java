@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Category;
 import com.mysql.cj.jdbc.Driver;
 import models.Config;
@@ -23,7 +24,6 @@ public class MySQLCategoriesDAO implements Categories {
         }
     }
 
-
     @Override
     public Category findUniqueCategoryId(Long category){
         String query = "SELECT * FROM categories WHERE id = ? LIMIT 1";
@@ -41,7 +41,6 @@ public class MySQLCategoriesDAO implements Categories {
     }
 
 
-
     public List<Category> all() {
         PreparedStatement stmt = null;
         try {
@@ -54,7 +53,6 @@ public class MySQLCategoriesDAO implements Categories {
     }
 
 //    do we need this if we have predefined categories we're going to use? -K
-
 //    @Override
 //    public Long insert(Category category) {
 //        try {
@@ -70,6 +68,22 @@ public class MySQLCategoriesDAO implements Categories {
 //            throw new RuntimeException("Error creating a new category.", e);
 //        }
 //    }
+
+//for finding categories maybe???
+    public int findCategoryByName(String title) {
+        String query = "SELECT * FROM categories WHERE title = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, title);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a category by title!", e);
+        }
+
+    }
+
 
     private Category extractCategory(ResultSet rs) throws SQLException {
         if(! rs.next()){

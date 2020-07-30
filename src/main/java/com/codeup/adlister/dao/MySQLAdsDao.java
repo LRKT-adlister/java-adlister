@@ -27,12 +27,6 @@ public abstract class MySQLAdsDao implements Ads {
     public List<Ad> searchAds(String keyword) throws SQLException {
 
         List<Ad> adList = new ArrayList<>();
-//        List<Ad> adList = new Ad(
-//                1,
-//                "Title",
-//                "description"
-//        );
-//        String sqlQuery = "SELECT a.id FROM ads AS a LEFT JOIN ads_categories AS ac ON a.id = ac.ad_id JOIN categories AS c ON c.id = ac.cat_id WHERE a.title LIKE ? OR c.title LIKE ?";
         String sqlQuery = "SELECT id FROM ads WHERE title LIKE ?";
 
         PreparedStatement stmt = connection.prepareStatement(sqlQuery, Statement.NO_GENERATED_KEYS);

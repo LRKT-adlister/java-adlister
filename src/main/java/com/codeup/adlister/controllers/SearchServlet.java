@@ -17,11 +17,11 @@ public class SearchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchString = request.getParameter("s");
+//      String searchString = request.getParameter("c"); for when we search w/ categories
         try {
             List<Ad> adList = DaoFactory.getAdsDao().searchAds(searchString);
             System.out.println(adList);
             request.setAttribute("ads", adList);
-
         } catch (SQLException se) {
             se.printStackTrace();
         }
