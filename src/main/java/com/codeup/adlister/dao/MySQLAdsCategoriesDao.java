@@ -59,5 +59,19 @@ public class MySQLAdsCategoriesDao implements AdsCategories {
         return AdsCategories;
     }
 
+    public void insert(long adID, long catID) {
+        System.out.println("adID = " + adID);
+        System.out.println("catID = " + catID);
+        try {
+            String insertQuery = "INSERT INTO ads_categories(ad_id, cat_id) VALUES (?, ?)";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, adID);
+            stmt.setLong(2, catID);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error creating ad category link", e);
+        }
+    }
+
 }
 

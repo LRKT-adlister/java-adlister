@@ -7,4 +7,8 @@ import java.util.List;
 public interface AdsCategories {
     List<AdCategory> all();
 
+ void insert(long adID, long catID);
+
 }
+
+
