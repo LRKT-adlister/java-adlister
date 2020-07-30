@@ -16,15 +16,14 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <div class="container">
     <form action="/ads/edit" method="post">
-<<<<<<< HEAD
+
         <input type="hidden" name="adToUpdate" value="${adObject}">
     <div class="col-md-6 justify-content-center form-group">
-        <h1>TODO edit Ads.</h1>
-=======
-        <%--        <input type="hidden" name="adToUpdate" value="${adObject}">--%>
-        <div class="form-group">
-            <h1>TODO edit Ads.</h1>
->>>>>>> 28a40c0708ac728e4de658e16f0c7f2a547e9607
+
+<%--        &lt;%&ndash;        <input type="hidden" name="adToUpdate" value="${adObject}">&ndash;%&gt;--%>
+<%--        <div class="form-group">--%>
+<%--            <h1>TODO edit Ads.</h1>--%>
+
             <label for="title"> Title:</label>
             <input id="title" type="text" name="title" value="${existingTitle}">
         </div>
