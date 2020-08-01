@@ -6,7 +6,7 @@
     </jsp:include>
 </head>
 <body>
-<<<<<<< HEAD
+
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
         <h1>Create a new Ad</h1>
