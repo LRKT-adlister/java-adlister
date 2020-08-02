@@ -55,7 +55,7 @@ public class MySQLCategoriesDAO implements Categories {
 
 
 //for finding categories maybe???
-    public int findCategoryByName(String title) {
+    public int findCategoryByTitle(String title) {
         String query = "SELECT * FROM categories WHERE title = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
